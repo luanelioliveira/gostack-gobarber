@@ -1,12 +1,12 @@
 import { Router } from "express";
 import appoitmentsRouter from "./appointments.routes";
 import usersRouter from "./users.routes";
-import healthRouter from "./health.routes";
+import healthCheckRouter from "./healthcheck.routes";
 
 const routes = Router();
 
 routes.use("/appointments", appoitmentsRouter);
 routes.use("/users", usersRouter);
-routes.use("/health", healthRouter);
+routes.use("/health", healthCheckRouter);
 
 export default routes;

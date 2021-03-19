@@ -1,8 +1,8 @@
 import { Router } from "express";
 
-const sessionsRouter = Router();
+const healthCheckRouter = Router();
 
-sessionsRouter.get("/", async (request, response) => {
+healthCheckRouter.get("/", async (request, response) => {
   try {
     return response.json({ status: 'OK' });
   } catch (error) {
@@ -10,5 +10,5 @@ sessionsRouter.get("/", async (request, response) => {
   }
   });
 
-export default sessionsRouter;
+export default healthCheckRouter;
 
