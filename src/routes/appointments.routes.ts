@@ -18,25 +18,6 @@ appoitmentsRouter.get("/", async (request, response) => {
   return response.json(appointments);
 });
 
-appoitmentsRouter.post("/", async (request, response) => {
-  try {
-    const { provider_id, date } = request.body;
-
-    const parsedDate = parseISO(date);
-
-    const createAppointmentService = new CreateAppointmentService();
-
-    const appointment = await createAppointmentService.execute({
-      provider_id,
-      date: parsedDate,
-    });
-
-    return response.json(appointment);
-  } catch (error) {
-    return response.status(400).json({ error: error.message });
-  }
-});
-
 appoitmentsRouter.get("/:id", async (request, response) => {
   const appointmentsRepository = getCustomRepository(AppointmentsRepository);
 
@@ -49,6 +30,21 @@ appoitmentsRouter.get("/:id", async (request, response) => {
   }
 
   return response.json(findAppointment);
+});
+
+appoitmentsRouter.post("/", async (request, response) => {
+  const { provider_id, date } = request.body;
+
+  const parsedDate = parseISO(date);
+
+  const createAppointmentService = new CreateAppointmentService();
+
+  const appointment = await createAppointmentService.execute({
+    provider_id,
+    date: parsedDate,
+  });
+
+  return response.json(appointment);
 });
 
 export default appoitmentsRouter;
