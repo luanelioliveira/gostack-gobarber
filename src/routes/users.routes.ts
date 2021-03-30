@@ -6,7 +6,6 @@ import UpdateUserAvatarService from "../services/UpdateUserAvatarService";
 
 import ensureAuthenticated from "../middlewares/ensureAuthenticated";
 import uploadConfig from "../config/upload";
-import { UpdateDateColumn } from "typeorm";
 
 const usersRouter = Router();
 const uploader = multer(uploadConfig);
